@@ -18,13 +18,13 @@ public class AbstractComponents {
 
     public void waitToAppear(By test) {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(test));
     }
 
     public void invisibilityOfElement(WebElement ele){
 
-        WebDriverWait w = new WebDriverWait(driver,Duration.ofSeconds(10));
+        WebDriverWait w = new WebDriverWait(driver,Duration.ofSeconds(5));
         w.until(ExpectedConditions.invisibilityOf(ele));
     }
 

@@ -20,7 +20,7 @@ public class ProductCatalogue extends AbstractComponents {
     }
 
 
-    @FindBy(css = "mb-3")
+    @FindBy(css = ".mb-3")
     List<WebElement> products;
 
     By productsBy = By.cssSelector(".mb-3");
@@ -45,14 +45,16 @@ public class ProductCatalogue extends AbstractComponents {
 
     public WebElement getProductByName(String productName){
 
-        return getProductList().stream().filter(p-> p.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
+       WebElement it = getProductList().stream().filter(p-> p.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
+       System.out.println(it);
+       return it;
     }
 
     public void addProductToCart(String productName){
 
         WebElement item =getProductByName(productName);
         item.findElement(AddToCart).click();
-        invisibilityOfElement(spinner);
         waitToAppear(toastMessage);
+        invisibilityOfElement(spinner);
     }
 }
